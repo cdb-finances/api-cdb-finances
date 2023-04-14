@@ -4,9 +4,9 @@ create table users (
 	id  serial primary key,
 	name text not null,
 	email text not null,
-	password text not null,
-	cpf text not null,
-	phone text not null
+	password text,
+	cpf text,
+	phone text 
 )
 
 create table client (
