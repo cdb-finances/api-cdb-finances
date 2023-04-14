@@ -1,4 +1,4 @@
-const knex = require('../conexão');
+const knex = require('../../services/connectionSQL');
 const bcrypt = require('bcrypt');
 const hash = process.env.JWT_HASH;
 
