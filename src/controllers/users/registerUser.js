@@ -1,6 +1,5 @@
 const knex = require('../conexão');
 const bcrypt = require('bcrypt');
-const { rmSync } = require('fs');
 const hash = process.env.JWT_HASH;
 
 const registerUser = async (req, res) => {
@@ -25,7 +24,7 @@ const registerUser = async (req, res) => {
 
         return res.status(201).json(registeredUser);
     } catch (error) {
-        return rmSync.status(500).json({ mensagem: "Erro interno do servido." })
+        return res.status(500).json({ mensagem: "Erro interno do servido." })
     }
 };
 
