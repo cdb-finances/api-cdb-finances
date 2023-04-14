@@ -5,8 +5,8 @@ create table users (
 	name text not null,
 	email text not null,
 	password text not null,
-	cpf text not null,
-	phone text not null
+	cpf text,
+	phone text
 )
 
 create table client (
