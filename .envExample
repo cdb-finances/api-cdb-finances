@@ -1,0 +1,6 @@
+PORT=3000
+
+KNEX_HOST="localhost"
+KNEX_USER=""
+KNEX_PASS=""
+KNEX_DATA="clube_do_bug_financas"
