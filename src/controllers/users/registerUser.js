@@ -12,6 +12,7 @@ const registerUser = async (req, res) => {
         }
 
         const encryptedPassword = await bcrypt.hash(password, 10);
+
         console.log('antes de adicionar');
 
         const user = await knex('users')
@@ -28,10 +29,9 @@ const registerUser = async (req, res) => {
 
         return res.status(201).json(registeredUser);
     } catch (error) {
-        console.log(error);
         return res.status(500).json({ mensagem: "Erro interno do servidor." })
     }
-};
+}
 
 
 module.exports = registerUser;
