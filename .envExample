@@ -5,3 +5,5 @@ KNEX_USER=""
 KNEX_PASS=""
 KNEX_DATA="clube_do_bug_financas"
 JWT_HASH=""
+
+DB_URL="postgres://rfkglqnq:SjqMRm8Ur9SD8nEb88Cb35jY-kvAONCw@babar.db.elephantsql.com/rfkglqnq"

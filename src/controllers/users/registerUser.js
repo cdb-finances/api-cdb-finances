@@ -13,8 +13,6 @@ const registerUser = async (req, res) => {
 
         const encryptedPassword = await bcrypt.hash(password, 10);
 
-        console.log('antes de adicionar');
-
         const user = await knex('users')
             .insert({
                 name: name,
