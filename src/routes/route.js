@@ -1,6 +1,7 @@
 const express = require('express');
 const loginUser = require('../controllers/users/loginUser');
 const registerUser = require('../controllers/users/registerUser');
+const updateUser = require('../controllers/users/updateUser')
 const validateRequisition = require('../middlewares/validateRequisition');
 const verifyLoggedUser = require('../middlewares/verifyLoggedUser');
 const userSchema = require('../schemas/userSchema');

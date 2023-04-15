@@ -3,18 +3,18 @@ const bcrypt = require('bcrypt');
 
 const updateUser = async (req, res) => {
   const { name, email, password, cpf, phone } = req.body
-  const userId = req.user
-
+  const userId = req.user.id
+  console.log(userId);
   try {
-    const userExist = await knex('users').where({ email }).first();
+    const userExist = await knex('users').where({ email });
 
-    if (userExist) {
+    if (userExist.length > 1) {
       return res.status(400).json({ mensagem: "Email já cadastrado" })
     }
 
     const encryptedPassword = await bcrypt.hash(password, 10);
 
-    const updatedUser = await knex('users')
+    await knex('users')
       .where('id', userId)
       .update(
         {
@@ -27,10 +27,9 @@ const updateUser = async (req, res) => {
       )
       .returning('*')
 
-    return res.status(204).json(updatedUser[0]);
+    return res.status(204).json({ mensagem: "Usuário atualizado com sucesso!" });
 
   } catch (error) {
-    console.log(error);
     return res.status(500).json({ mensagem: "Erro interno do servidor" });
   }
 }

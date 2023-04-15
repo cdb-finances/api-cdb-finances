@@ -1,9 +1,7 @@
 const jwt = require('jsonwebtoken');
-const knex = require('../conexão');
+const knex = require('../../services/connectionSQL');
 const bcrypt = require('bcrypt');
 const hash = process.env.JWT_HASH;
-
-
 
 const loginUser = async (req, res) => {
     const { email, password } = req.body;
@@ -18,7 +16,7 @@ const loginUser = async (req, res) => {
         const correctPassword = await bcrypt.compare(password, user.password);
 
         if (!correctPassword) {
-            return res.status(400).json("Email e senha não confere");
+            return res.status(400).json("Email ou senha inválidos");
         }
 
         const token = jwt.sign({ id: user.id }, hash, { expiresIn: '8h' });

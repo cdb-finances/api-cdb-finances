@@ -1,6 +1,6 @@
 const jwt = require('jsonwebtoken');
 const knex = require('../services/connectionSQL');
-
+const hash = process.env.JWT_HASH;
 
 const verifyLoggedUser = (async (req, res, next) => {
     const { authorization } = req.headers;
