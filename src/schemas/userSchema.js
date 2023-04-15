@@ -9,10 +9,11 @@ const userSchema = joi.object({
         'any.required': 'O campo email é obrigatório.',
         'string.email': 'O campo email precisa ter um formato válido.'
     }),
-    password: joi.string().min(6).minOfUppercase(1).minOfSpecialCharacters(2)
-        .minOfUppercase(1).minOfNumeric(1).required().noWhiteSpaces().messages({
-            'any.required': 'O campo senha é obrigatório.',
-        })
+    password: joi.string().required().messages({
+        'any.required': 'O campo senha é obrigatório.',
+    }),
+    cpf: joi.string(),
+    phone: joi.string()
 })
 
 module.exports = userSchema;
