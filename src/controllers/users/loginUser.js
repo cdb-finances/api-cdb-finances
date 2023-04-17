@@ -1,7 +1,7 @@
 const jwt = require('jsonwebtoken');
 const knex = require('../../services/connectionSQL');
 const bcrypt = require('bcrypt');
-const hash = process.env.JWT_HASH;
+const hash = "uV9R6dJBs7erwsBw8giLZyexOjw";
 
 const loginUser = async (req, res) => {
     const { email, password } = req.body;
@@ -28,6 +28,7 @@ const loginUser = async (req, res) => {
             token
         });
     } catch (error) {
+        console.log(error.message)
         return res.status(500).json({ mensagem: "Erro interno do servidor." });
     }
 };

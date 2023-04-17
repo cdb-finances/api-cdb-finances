@@ -20,7 +20,7 @@ const updateUser = async (req, res) => {
         {
           name: name,
           email: email,
-          password: encryptedPassword,
+          password: encryptedPassword || 'Não informado',
           cpf: cpf || 'Não informado',
           phone: phone || 'Não informado',
         }
@@ -30,8 +30,9 @@ const updateUser = async (req, res) => {
     return res.status(200).json(updatedUser[0]);
 
   } catch (error) {
+    console.log(error)
     return res.status(500).json({ mensagem: "Erro interno do servidor" });
   }
 }
 
-module.exports = updateUser
+module.exports = updateUser;
