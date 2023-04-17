@@ -8,7 +8,9 @@ const userSchema = joi.object({
     email: joi.string().email().required().messages({
         'any.required': 'O campo email é obrigatório.',
         'string.email': 'O campo email precisa ter um formato válido.'
-    })
+    }),
+    cpf: joi.string(),
+    phone: joi.string()
 })
 
 module.exports = userSchema;

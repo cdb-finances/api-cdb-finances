@@ -1,9 +1,11 @@
+const { number } = require('joi');
 const knex = require('../../services/connectionSQL');
 const bcrypt = require('bcrypt');
 
 const updateUser = async (req, res) => {
   const { name, email, password, cpf, phone } = req.body
   const userId = req.user.id
+  const toUpdate = { name, email }
 
   try {
     const userExist = await knex('users').where({ email });
@@ -12,19 +14,22 @@ const updateUser = async (req, res) => {
       return res.status(400).json({ mensagem: "Email já cadastrado" })
     }
 
-    const encryptedPassword = await bcrypt.hash(password, 10);
+    if (password) {
+      const encryptedPassword = await bcrypt.hash(password, 10);
+      toUpdate.password = encryptedPassword;
+    }
+
+    if (cpf) {
+      toUpdate.cpf = cpf
+    }
+
+    if (phone) {
+      toUpdate.phone = phone
+    }
 
     const updatedUser = await knex('users')
       .where('id', userId)
-      .update(
-        {
-          name: name,
-          email: email,
-          password: encryptedPassword,
-          cpf: cpf || 'Não informado',
-          phone: phone || 'Não informado',
-        }
-      )
+      .update(toUpdate)
       .returning('*')
 
     return res.status(200).json(updatedUser[0]);
