@@ -1,14 +1,15 @@
 {
+  "name": "deploy-back-m05",
   "version": 2,
-  "builds": [
-    {
-      "src": "./src/index.js"
-    }
-  ],
+  "public": true,
+  "build": {
+    "src": "./src/index.js",
+    "use": "@vercel/node"
+  },
   "routes": [
     {
       "src": "/(.*)",
-      "dest": "/"
+      "dest": "./src/index.js"
     }
   ]
 }
