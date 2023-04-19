@@ -3,8 +3,13 @@
   "version": "1.0.0",
   "description": "![](https://i.imgur.com/xG74tOh.png)",
   "main": "index.js",
+  "engines": {
+    "node": "18.x"
+  },
   "scripts": {
-    "dev": "nodemon src/index.js"
+    "start": "node ./src/index.js",
+    "build": "babel src -d dist",
+    "dev": "nodemon ./src/index.js"
   },
   "repository": {
     "type": "git",
@@ -29,5 +34,10 @@
     "nodemailer": "^6.9.1",
     "nodemon": "^2.0.22",
     "pg": "^8.10.0"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.21.0",
+    "@babel/core": "^7.21.4",
+    "@babel/preset-env": "^7.21.4"
   }
 }
