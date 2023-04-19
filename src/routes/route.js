@@ -9,6 +9,7 @@ const registerClient = require('../controllers/client/registerClient');
 
 const userSchema = require('../schemas/userSchema');
 const loginSchema = require('../schemas/loginSchema');
+const updateUserSchema = require('../schemas/updateUserSchema');
 const route = express();
 
 route.get('/', async (req, res) => {
@@ -20,7 +21,7 @@ route.post('/login', validateRequisition(loginSchema), loginUser);
 
 route.use(verifyLoggedUser);
 
-route.put('/user', validateRequisition(userSchema), updateUser)
+route.put('/user', validateRequisition(updateUserSchema), updateUser)
 
 route.post('/client', validateRequisition(clientSchema), registerClient);
 
