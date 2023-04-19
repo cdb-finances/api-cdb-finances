@@ -2,9 +2,16 @@
 const knex = require('knex')({
     client: 'pg',
     connection: {
-        connectionString: process.env.DB_URL,
-        ssl: true
+        host: process.env.KNEX_HOST,
+        user: process.env.KNEX_USER,
+        password: process.env.KNEX_PASS,
+        database: process.env.KNEX_DATA
     }
 });
 
 module.exports = knex;
+
+
+
+//   connectionString: process.env.DB_URL,
+//         ssl: { rejectUnauthorized: false }

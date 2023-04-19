@@ -3,12 +3,9 @@ const bcrypt = require('bcrypt');
 const hash = process.env.JWT_HASH;
 
 const registerUser = async (req, res) => {
-    const { name, email, password, cpf, phone } = req.body;
+    const { name, email, password } = req.body;
 
     try {
-        if (!password) {
-            return res.status(400).json({ mensagem: "O Campo senha é obrigatório!" })
-        }
 
         const userExist = await knex('users').where({ email }).first();
         if (userExist) {
@@ -22,10 +19,7 @@ const registerUser = async (req, res) => {
                 name: name,
                 email: email,
                 password: encryptedPassword,
-                cpf: cpf || '',
-                phone: phone || ''
-            })
-            .returning('*')
+            }).returning('*');
 
         const { password: _, ...registeredUser } = user[0]
 
