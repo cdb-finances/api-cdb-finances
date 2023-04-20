@@ -21,7 +21,7 @@ const clientSchema = joi.object({
   defaulter: joi.boolean().messages({
     "boolean.base": "O valor não é um boolean"
   }),
-  address: joi.string().allow(),
+  address: joi.string().allow(null, ''),
   complement: joi.string(),
   zip_code: joi.string(),
   neighborhood: joi.string(),
