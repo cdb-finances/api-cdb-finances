@@ -9,9 +9,9 @@ const updateUserSchema = joi.object({
     'any.required': 'O campo email é obrigatório.',
     'string.email': 'O campo email precisa ter um formato válido.'
   }),
-  password: joi.string(),
-  phone: joi.string(),
-  cpf: joi.string()
+  password: joi.string().allow(null, ''),
+  phone: joi.string().allow(null, ''),
+  cpf: joi.string().allow(null, '')
 })
 
 module.exports = updateUserSchema
