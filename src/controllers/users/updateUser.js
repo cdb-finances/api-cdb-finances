@@ -1,4 +1,3 @@
-const { number } = require('joi');
 const knex = require('../../services/connectionSQL');
 const bcrypt = require('bcrypt');
 

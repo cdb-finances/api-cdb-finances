@@ -10,10 +10,11 @@ const registerClient = require('../controllers/client/registerClient');
 const userSchema = require('../schemas/userSchema');
 const loginSchema = require('../schemas/loginSchema');
 const updateUserSchema = require('../schemas/updateUserSchema');
+const getLoggedUser = require('../controllers/users/getUse');
 const route = express();
 
 route.get('/', async (req, res) => {
-  return res.send("ok")
+  return res.json("ok")
 })
 
 route.post('/user', validateRequisition(userSchema), registerUser);
@@ -21,8 +22,8 @@ route.post('/login', validateRequisition(loginSchema), loginUser);
 
 route.use(verifyLoggedUser);
 
+route.get('/user', getLoggedUser)
 route.put('/user', validateRequisition(updateUserSchema), updateUser)
-
 route.post('/client', validateRequisition(clientSchema), registerClient);
 
 module.exports = route;
