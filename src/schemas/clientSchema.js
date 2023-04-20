@@ -22,11 +22,11 @@ const clientSchema = joi.object({
     "boolean.base": "O valor não é um boolean"
   }),
   address: joi.string().allow(null, ''),
-  complement: joi.string(),
-  zip_code: joi.string(),
-  neighborhood: joi.string(),
-  city: joi.string(),
-  state: joi.string(),
+  complement: joi.string().allow(null, ''),
+  zip_code: joi.string().allow(null, ''),
+  neighborhood: joi.string().allow(null, ''),
+  city: joi.string().allow(null, ''),
+  state: joi.string().allow(null, ''),
 });
 
 module.exports = clientSchema;
