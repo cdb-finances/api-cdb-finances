@@ -10,9 +10,10 @@ const registerClient = require('../controllers/client/registerClient');
 
 const userSchema = require('../schemas/userSchema');
 const loginSchema = require('../schemas/loginSchema');
+const verifyEmailDb = require('../middlewares/verifyEmailDb');
 const route = express();
 
-route.post('/user', validateRequisition(userSchema), registerUser);
+route.post('/user', verifyEmailDb, validateRequisition(userSchema), registerUser);
 route.post('/login', validateRequisition(loginSchema), loginUser);
 
 route.use(verifyLoggedUser);

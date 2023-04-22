@@ -7,11 +7,10 @@ const knex = require('knex')({
         password: process.env.KNEX_PASS,
         database: process.env.KNEX_DATA
     }
+
 });
 
 module.exports = knex;
 
-
-
-//   connectionString: process.env.DB_URL,
-//         ssl: { rejectUnauthorized: false }
+        // connectionString: process.env.DB_URL,
+        // ssl: { rejectUnauthorized: false }
