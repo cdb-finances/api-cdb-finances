@@ -4,22 +4,37 @@ const registerUser = require('../controllers/users/registerUser');
 const updateUser = require('../controllers/users/updateUser')
 const validateRequisition = require('../middlewares/validateRequisition');
 const verifyLoggedUser = require('../middlewares/verifyLoggedUser');
-
 const clientSchema = require('../schemas/clientSchema');
+const listClients = require('../controllers/client/listClients');
 const registerClient = require('../controllers/client/registerClient');
+const detailClient = require('../controllers/client/detailClient');
+const updateClient = require('../controllers/client/updateClient');
+const registerCharge = require('../controllers/charges/registerCharge');
+const listCharges = require('../controllers/charges/listCharges');
 
 const userSchema = require('../schemas/userSchema');
 const loginSchema = require('../schemas/loginSchema');
 const verifyEmailDb = require('../middlewares/verifyEmailDb');
+const updateClientSchema = require('../schemas/updateClientSchema');
+const updateUserSchema = require('../schemas/updateUserSchema');
+const registerChargeSchema = require('../schemas/registerChargeSchema');
+
+const getLoggedUser = require('../controllers/users/getUse');
 const route = express();
 
 route.post('/user', verifyEmailDb, validateRequisition(userSchema), registerUser);
+route.post('/user', validateRequisition(userSchema), registerUser);
 route.post('/login', validateRequisition(loginSchema), loginUser);
 
 route.use(verifyLoggedUser);
 
-route.put('/user', validateRequisition(userSchema), updateUser)
-
+route.get('/user', getLoggedUser);
+route.put('/user', validateRequisition(updateUserSchema), updateUser);
 route.post('/client', validateRequisition(clientSchema), registerClient);
+route.get('/client', listClients);
+route.get('/client/:id', detailClient);
+route.put('/client/:id', validateRequisition(updateClientSchema), updateClient);
+route.post('/charge/:id', validateRequisition(registerChargeSchema), registerCharge);
+route.get('/charges', listCharges);
 
 module.exports = route;
