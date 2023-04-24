@@ -32,9 +32,9 @@ const listChargesByStatus = async (req, res) => {
         });
 
         const chargesByStatus = {
-            pagas: paidCharges,
-            pendentes: pendingCharges,
-            vencidas: expiredCharges
+            paid: paidCharges,
+            pending: pendingCharges,
+            expired: expiredCharges
         };
 
         return res.status(200).json(chargesByStatus);

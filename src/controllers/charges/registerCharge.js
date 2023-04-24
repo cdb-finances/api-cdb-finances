@@ -18,7 +18,7 @@ const registerCharge = async (req, res) => {
 
         const charge = { ...userCharge[0], name: clientExist[0].name };
 
-        return res.status(200).json(charge);
+        return res.status(201).json(charge);
 
     } catch (error) {
         return res.status(500).json({ mensagem: "Erro interno do servidor" });
