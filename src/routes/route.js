@@ -11,6 +11,7 @@ const detailClient = require('../controllers/client/detailClient');
 const updateClient = require('../controllers/client/updateClient');
 const registerCharge = require('../controllers/charges/registerCharge');
 const listCharges = require('../controllers/charges/listCharges');
+const listChargesByStatus = require('../controllers/charges/listChargesByStatus');
 
 const userSchema = require('../schemas/userSchema');
 const loginSchema = require('../schemas/loginSchema');
@@ -19,7 +20,7 @@ const updateClientSchema = require('../schemas/updateClientSchema');
 const updateUserSchema = require('../schemas/updateUserSchema');
 const registerChargeSchema = require('../schemas/registerChargeSchema');
 
-const getLoggedUser = require('../controllers/users/getUse');
+const getLoggedUser = require('../controllers/users/getUser');
 const route = express();
 
 route.post('/user', verifyEmailDb, validateRequisition(userSchema), registerUser);
@@ -35,6 +36,7 @@ route.get('/client', listClients);
 route.get('/client/:id', detailClient);
 route.put('/client/:id', validateRequisition(updateClientSchema), updateClient);
 route.post('/charge/:id', validateRequisition(registerChargeSchema), registerCharge);
-route.get('/charges', listCharges);
+route.get('/charge', listCharges);
+route.get('/charge/status', listChargesByStatus);
 
 module.exports = route;

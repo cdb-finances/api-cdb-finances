@@ -23,7 +23,6 @@
   },
   "homepage": "https://github.com/Leonardovafernandez/back-integral-m05-t09#readme",
   "dependencies": {
-    "@joi/date": "^2.1.0",
     "bcrypt": "^5.1.0",
     "cors": "^2.8.5",
     "dotenv": "^16.0.3",
