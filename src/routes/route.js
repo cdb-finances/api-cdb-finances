@@ -23,6 +23,9 @@ const registerChargeSchema = require('../schemas/registerChargeSchema');
 const getLoggedUser = require('../controllers/users/getUser');
 const route = express();
 
+route.get('/', (req, res) => {
+  return res.json('ok')
+})
 route.post('/user', verifyEmailDb, validateRequisition(userSchema), registerUser);
 route.post('/user', validateRequisition(userSchema), registerUser);
 route.post('/login', validateRequisition(loginSchema), loginUser);

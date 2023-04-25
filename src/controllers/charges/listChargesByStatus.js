@@ -13,7 +13,7 @@ const listChargesByStatus = async (req, res) => {
             .select('charge.id', 'name', 'description', 'value', 'due_date', 'paid_out')
             .returning('*');
 
-        const chargesListByStatus = chargesList.map((charge) => {
+        chargesList.map((charge) => {
             if (charge.paid_out === true) {
                 paidCharges.push(charge)
             };
