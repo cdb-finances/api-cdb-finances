@@ -11,6 +11,7 @@ const listChargesByStatus = async (req, res) => {
         const chargesList = await knex('charge')
             .rightJoin('client', 'charge.client_id', '=', 'client.id')
             .select('charge.id', 'name', 'description', 'value', 'due_date', 'paid_out')
+            .where('charge.id', 'is not', null)
             .returning('*');
 
         chargesList.map((charge) => {
