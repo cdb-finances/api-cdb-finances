@@ -1,11 +1,11 @@
-const joi = require('joi').extend(require('@joi/date'));;
+const joi = require('joi');
 
 const registerChargeSchema = joi.object({
     description: joi.string().required().messages({
         'any.required': 'Este campo deve ser preenchido',
         'string.empty': 'Este campo deve ser preenchido'
     }),
-    due_date: joi.date().format('DD/MM/YYYY').required().messages({
+    due_date: joi.date().required().messages({
         'date.format': 'Este campo precisa estar em um formato válido',
         'any.required': 'Este campo deve ser preenchido'
     }),
@@ -15,10 +15,8 @@ const registerChargeSchema = joi.object({
         'any.required': 'Este campo deve ser preenchido',
         'string.empty': 'Este campo deve ser preenchido'
     }),
-    status: joi.boolean().default(true).required().messages({
-        'any.required': 'Este campo deve ser preenchido',
-        'boolean.base': 'Este campo deve ser preenchido no formato adequado'
-    }),
+    paid_out: joi.string(),
+    status: joi.string().required()
 })
 
 
