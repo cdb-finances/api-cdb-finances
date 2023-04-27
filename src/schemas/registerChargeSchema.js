@@ -5,8 +5,7 @@ const registerChargeSchema = joi.object({
         'any.required': 'Este campo deve ser preenchido',
         'string.empty': 'Este campo deve ser preenchido'
     }),
-    due_date: joi.date().required().messages({
-        'date.format': 'Este campo precisa estar em um formato válido',
+    due_date: joi.string().required().messages({
         'any.required': 'Este campo deve ser preenchido'
     }),
     value: joi.number().positive().required().messages({
@@ -15,8 +14,7 @@ const registerChargeSchema = joi.object({
         'any.required': 'Este campo deve ser preenchido',
         'string.empty': 'Este campo deve ser preenchido'
     }),
-    paid_out: joi.string(),
-    status: joi.string().required()
+    status: joi.boolean().required()
 })
 
 
