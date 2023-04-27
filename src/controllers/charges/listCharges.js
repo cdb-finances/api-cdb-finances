@@ -5,7 +5,7 @@ const listCharges = async (req, res) => {
     try {
         const chargesList = await knex('charge')
             .rightJoin('client', 'charge.client_id', '=', 'client.id')
-            .select('charge.id', 'name', 'description', 'value', 'due_date', 'paid_out')
+            .select('charge.id', 'name', 'description', 'value', 'due_date', 'paid_out', 'client_id')
             .where('charge.id', 'is not', null)
             .returning('*');
 
