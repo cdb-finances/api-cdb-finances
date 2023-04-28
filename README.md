@@ -12,19 +12,19 @@ A versão final do código de cada sprint deverá estar na branch principal do r
 
 No fork de vocês, favor alterar este README para adicionar os links correspondentes para os seguintes itens:
 
-**Repositório de Backend**: 
+**Repositório de Backend**: https://github.com/Leonardovafernandez/back-integral-m05-t09
 
-**Repositório de Frontend**: 
+**Repositório de Frontend**: https://github.com/Leonardovafernandez/front-integral-m05-t09
 
-**URL da aplicação funcionando**: 
+**URL da aplicação funcionando**: https://front-integral-m05-t09-gray.vercel.app/
 
 ---
 
 E os itens abaixo, que deverão ser preenchidos apenas após a finalização de todas as sprints do projeto: 
 
-**Pull Request (PR) de Backend**: 
+**Pull Request (PR) de Backend**: https://github.com/cubos-academy/back-integral-m05-t09/pull/8
 
-**Pull Request (PR) de Frontend**: 
+**Pull Request (PR) de Frontend**: https://github.com/cubos-academy/front-integral-m05-t09/pull/16
 
 Estes Pull Requests (PRs) deverão ser criados a partir da branch principal do fork correspondente de vocês daquela stack tendo como destino o repositório base da stack do desafio.
 
@@ -210,6 +210,7 @@ ________________________________________________________________________________
 </details>
 
 ---
+
 <br>
 
 <b>[Figma Desafio M05 - Sprint 2](https://www.figma.com/file/QC6OOO8qc7ZP2kLuybs4Wh/M05-SPRINT-02)</b>
@@ -349,5 +350,3 @@ ________________________________________________________________________________
 </details>
 
 </details>
-
----
