@@ -15,15 +15,15 @@ const updateClient = async (req, res) => {
     }
 
     try {
-        const clientExist = await knex('client').where({ id }).first();
+        const clientExist = await knex('client').where({ id });
 
-        if (!clientExist) {
+        if (clientExist.length > 1) {
             return res.status(404).json({ menssagem: "Cliente não encontrado" })
         }
 
-        const emailExist = await knex('client').where({ email }).first();
+        const emailExist = await knex('client').where({ email });
 
-        if (emailExist) {
+        if (emailExist.length > 1) {
             return res.status(400).json({ mensagem: "E-mail já cadastrado" })
         }
 
