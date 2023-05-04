@@ -21,6 +21,9 @@ const updateUserSchema = require('../schemas/updateUserSchema');
 const registerChargeSchema = require('../schemas/registerChargeSchema');
 
 const getLoggedUser = require('../controllers/users/getUser');
+const updateCharge = require('../controllers/charges/updateCharge');
+const updateChargeSchema = require('../schemas/updateChargeSchema');
+const deleteCharge = require('../controllers/charges/deleteCharge');
 const route = express();
 
 route.get('/', (req, res) => {
@@ -38,8 +41,11 @@ route.post('/client', validateRequisition(clientSchema), registerClient);
 route.get('/client', listClients);
 route.get('/client/:id', detailClient);
 route.put('/client/:id', validateRequisition(updateClientSchema), updateClient);
+
 route.post('/charge/:id', validateRequisition(registerChargeSchema), registerCharge);
 route.get('/charge', listCharges);
 route.get('/charge/status', listChargesByStatus);
+route.put('/charge/:id', validateRequisition(updateChargeSchema), updateCharge);
+route.delete('/charge/:id', deleteCharge);
 
 module.exports = route;
