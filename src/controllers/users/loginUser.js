@@ -23,6 +23,7 @@ const loginUser = async (req, res) => {
 
         const { password: _, ...userInfo } = user;
 
+
         return res.status(200).json({
             user: userInfo,
             token

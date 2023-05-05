@@ -7,9 +7,6 @@ const registerUser = async (req, res) => {
     const { name, email, password } = req.body;
 
     try {
-        if (!password) {
-            return res.status(400).json({ mensagem: "O Campo senha é obrigatório!" })
-        }
 
         const userExist = await knex('users').where({ email }).first();
         if (userExist) {
@@ -23,8 +20,7 @@ const registerUser = async (req, res) => {
                 name: name,
                 email: email,
                 password: encryptedPassword,
-            })
-            .returning('*')
+            }).returning('*');
 
         const { password: _, ...registeredUser } = user[0]
 
