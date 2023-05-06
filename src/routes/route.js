@@ -29,6 +29,7 @@ const listExpiredCharges = require('../controllers/charges/listExpiredCharge');
 const listPendingCharges = require('../controllers/charges/listPendingCharge');
 const listDefaulterClients = require('../controllers/client/listDefaulterClients');
 const listInDayClients = require('../controllers/client/listInDayClients');
+const listTotalChargesValues = require('../controllers/charges/listTotalChargesValues');
 const route = express();
 
 route.get('/', (req, res) => {
@@ -52,6 +53,7 @@ route.put('/client/:id', validateRequisition(updateClientSchema), updateClient);
 
 route.post('/charge/:id', validateRequisition(registerChargeSchema), registerCharge);
 route.get('/charge', listCharges);
+route.get('/charge/total', listTotalChargesValues);
 route.get('/charge/status', listChargesByStatus);
 route.get('/charge/paid', listPaidCharges);
 route.get('/charge/expired', listExpiredCharges);
