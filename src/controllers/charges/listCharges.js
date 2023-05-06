@@ -32,7 +32,3 @@ const listCharges = async (req, res) => {
 };
 
 module.exports = listCharges;
-
-
-
-
