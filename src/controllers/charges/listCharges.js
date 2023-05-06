@@ -25,14 +25,9 @@ const listCharges = async (req, res) => {
         }
         return res.status(200).json(chargesList)
     } catch (error) {
-        console.log(error.message)
         return res.status(500).json({ mensagem: "Erro interno do servidor" });
     }
 
 };
 
 module.exports = listCharges;
-
-
-
-
