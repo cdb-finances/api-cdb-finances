@@ -54,7 +54,7 @@ route.put('/client/:id', validateRequisition(updateClientSchema), updateClient);
 
 route.post('/charge/:id', validateRequisition(registerChargeSchema), registerCharge);
 route.get('/charge', listCharges);
-route.get('/charge/total', listTotalChargesValues);
+route.get('/charge/total-values', listTotalChargesValues);
 route.get('/charge/status', listChargesByStatus);
 route.get('/charge/paid', listPaidCharges);
 route.get('/charge/expired', listExpiredCharges);
