@@ -1,8 +1,11 @@
 const knex = require('knex')({
     client: 'pg',
     connection: {
-        sectionString: process.env.DB_URL,
-        ssl: { rejectUnauthorized: false }
+        host: process.env.KNEX_HOST,
+        user: process.env.KNEX_USER,
+        password: process.env.KNEX_PASS,
+        database: process.env.KNEX_DATA,
+        port: 5432
     }
 });
 

@@ -59,4 +59,5 @@ route.get('/charge/pending', listPendingCharges);
 route.put('/charge/:id', validateRequisition(updateChargeSchema), updateCharge);
 route.delete('/charge/:id', deleteCharge);
 
+
 module.exports = route;
