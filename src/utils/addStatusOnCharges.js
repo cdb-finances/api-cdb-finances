@@ -1,19 +1,21 @@
+const { log } = require("handlebars");
 const isDateAfterToday = require("./verifyDate");
 
 const addStatusOnCharges = (chargesArray) => {
-  chargesArray.forEach(charge => {
+  const charges = chargesArray.map(charge => {
 
     if (charge.paid_out) {
-      return 'Paga'
+      return { ...charge, status: 'paga' }
     }
 
     if (charge.paid_out && isDateAfterToday(charge.due_date)) {
-      return 'Pendente'
+      return { ...charge, status: 'pendente' }
+
     }
 
-    return 'Vencida'
+    return { ...charge, status: 'vencida' }
   });
-  return chargesArray;
+  return charges;
 }
 
 
