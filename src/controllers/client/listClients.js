@@ -6,6 +6,13 @@ const listClients = async (req, res) => {
 
     try {
         if (search && isNaN(search)) {
+
+            if (search.includes('@')) {
+                clientList = await knex('client')
+                    .whereILike('email', `%${search}%`)
+                return res.status(200).json(clientList);
+            }
+
             clientList = await knex('client')
                 .whereILike('name', `%${search}%`)
 
