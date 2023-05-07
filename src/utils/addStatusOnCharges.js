@@ -4,16 +4,15 @@ const isDateAfterToday = require("./verifyDate");
 const addStatusOnCharges = (chargesArray) => {
   const charges = chargesArray.map(charge => {
 
-    if (charge.paid_out) {
-      return { ...charge, status: 'paga' }
-    }
-
-    if (charge.paid_out && isDateAfterToday(charge.due_date)) {
+    if (!charge.paid_out && isDateAfterToday(charge.due_date)) {
       return { ...charge, status: 'pendente' }
-
     }
 
-    return { ...charge, status: 'vencida' }
+    if (!charge.paid_out && !isDateAfterToday(charge.due_date)) {
+      return { ...charge, status: 'vencida' }
+    }
+
+    return { ...charge, status: 'paga' }
   });
   return charges;
 }
