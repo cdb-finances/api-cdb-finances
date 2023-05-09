@@ -16,5 +16,4 @@ const addStatusOnCharges = (chargesArray) => {
   return charges;
 }
 
-
 module.exports = addStatusOnCharges
