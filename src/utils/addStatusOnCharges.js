@@ -1,14 +1,13 @@
-const { log } = require("handlebars");
-const isDateAfterToday = require("./verifyDate");
+const isDateAfterOrToday = require("./verifyDate");
 
 const addStatusOnCharges = (chargesArray) => {
   const charges = chargesArray.map(charge => {
 
-    if (!charge.paid_out && isDateAfterToday(charge.due_date)) {
+    if (!charge.paid_out && isDateAfterOrToday(charge.due_date)) {
       return { ...charge, status: 'pendente' }
     }
 
-    if (!charge.paid_out && !isDateAfterToday(charge.due_date)) {
+    if (!charge.paid_out && !isDateAfterOrToday(charge.due_date)) {
       return { ...charge, status: 'vencida' }
     }
 
@@ -16,6 +15,5 @@ const addStatusOnCharges = (chargesArray) => {
   });
   return charges;
 }
-
 
 module.exports = addStatusOnCharges
