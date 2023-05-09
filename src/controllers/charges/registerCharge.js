@@ -1,5 +1,5 @@
 const knex = require('../../services/connectionSQL');
-const isDateAfterToday = require('../../utils/verifyDate');
+const isDateAfterOrToday = require('../../utils/verifyDate');
 
 const registerCharge = async (req, res) => {
     const { description, due_date: dueDate, value, status } = req.body;
@@ -8,7 +8,7 @@ const registerCharge = async (req, res) => {
     try {
         const clientExist = await knex('client').where({ id }).returning(['name']);
 
-        const chargeExpired = isDateAfterToday(dueDate);
+        const chargeExpired = isDateAfterOrToday(dueDate);
 
         if (!chargeExpired && !status) {
             await knex('client')

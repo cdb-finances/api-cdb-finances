@@ -1,6 +1,5 @@
 const knex = require('../../services/connectionSQL');
 const verifyDate = require('../../utils/verifyDate');
-const formatValue = require('../../utils/formatValue');
 
 const listTotalChargesValues = async (req, res) => {
 
@@ -32,9 +31,9 @@ const listTotalChargesValues = async (req, res) => {
     });
 
     const totalChargesValues = {
-      paid: formatValue(paid),
-      expired: formatValue(expired),
-      pending: formatValue(pending),
+      paid: paid.toString(),
+      expired: expired.toString(),
+      pending: pending.toString(),
     }
 
     return res.status(200).json(totalChargesValues);

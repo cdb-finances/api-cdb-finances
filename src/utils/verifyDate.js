@@ -1,4 +1,4 @@
-function isDateAfterToday(dateStr) {
+function isDateAfterOrToday(dateStr) {
 
     const today = new Date();
     const [day, month, year] = dateStr.split('/');
@@ -7,4 +7,4 @@ function isDateAfterToday(dateStr) {
     return inputDate >= today;
 };
 
-module.exports = isDateAfterToday; 
+module.exports = isDateAfterOrToday; 
