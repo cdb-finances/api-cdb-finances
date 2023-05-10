@@ -1,4 +1,5 @@
 const knex = require('../../services/connectionSQL');
+const addStatusOnCharges = require('../../utils/addStatusOnCharges');
 const verifyDate = require('../../utils/verifyDate');
 
 const listPendingCharges = async (req, res) => {
@@ -20,7 +21,7 @@ const listPendingCharges = async (req, res) => {
       };
     });
 
-    return res.status(200).json(pendingCharges);
+    return res.status(200).json(addStatusOnCharges(pendingCharges));
   } catch (error) {
     return res.status(500).json({ mensagem: "Erro interno do servidor" });
   }
