@@ -1,7 +1,7 @@
 const jwt = require('jsonwebtoken');
 const knex = require('../../services/connectionSQL');
 const bcrypt = require('bcrypt');
-const hash = "uV9R6dJBs7erwsBw8giLZyexOjw";
+const hash = process.env.JWT_HASH
 
 const loginUser = async (req, res) => {
     const { email, password } = req.body;

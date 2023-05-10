@@ -1,7 +1,5 @@
 const knex = require('../../services/connectionSQL');
 const bcrypt = require('bcrypt');
-const { getMaxListeners } = require('process');
-const hash = process.env.JWT_HASH;
 
 const registerUser = async (req, res) => {
     const { name, email, password } = req.body;

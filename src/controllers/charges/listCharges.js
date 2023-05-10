@@ -1,4 +1,5 @@
 const knex = require('../../services/connectionSQL');
+const addStatusOnCharges = require('../../utils/addStatusOnCharges');
 
 const listCharges = async (req, res) => {
     const { search } = req.query;
@@ -23,16 +24,14 @@ const listCharges = async (req, res) => {
                 .where('charge.id', 'is not', null)
                 .returning('*');
         }
-        return res.status(200).json(chargesList)
+
+        const charges = addStatusOnCharges(chargesList)
+
+        return res.status(200).json(charges)
     } catch (error) {
-        console.log(error.message)
         return res.status(500).json({ mensagem: "Erro interno do servidor" });
     }
 
 };
 
 module.exports = listCharges;
-
-
-
-
