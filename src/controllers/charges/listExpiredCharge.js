@@ -1,4 +1,5 @@
 const knex = require('../../services/connectionSQL');
+const addStatusOnCharges = require('../../utils/addStatusOnCharges');
 const verifyDate = require('../../utils/verifyDate');
 
 const listExpiredCharges = async (req, res) => {
@@ -20,7 +21,7 @@ const listExpiredCharges = async (req, res) => {
       };
     });
 
-    return res.status(200).json(expiredCharges);
+    return res.status(200).json(addStatusOnCharges(expiredCharges));
   } catch (error) {
     return res.status(500).json({ mensagem: "Erro interno do servidor" });
   }
