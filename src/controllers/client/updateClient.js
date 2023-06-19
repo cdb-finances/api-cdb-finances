@@ -23,12 +23,13 @@ const updateClient = async (req, res) => {
 
         const emailExist = await knex('client').where({ email }).first();
 
-        if (emailExist) {
+        if (emailExist && emailExist.email !== clientExist.email) {
             return res.status(400).json({ mensagem: "E-mail já cadastrado" })
         }
 
         const cpfExist = await knex('client').where({ cpf }).first();
-        if (cpfExist) {
+
+        if (cpfExist && cpfExist.cpf !== clientExist.cpf) {
             return res.status(400).json({ mensagem: "CPF já cadastrado" })
         }
 
@@ -58,7 +59,7 @@ const updateClient = async (req, res) => {
 
         const updateClient = await knex('client')
             .where({ id })
-            .update({ fieldsToUpdate })
+            .update(fieldsToUpdate)
             .returning('*');
 
         return res.status(200).json(updateClient[0]);
